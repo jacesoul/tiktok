@@ -11,3 +11,4 @@
 - Navigator.of(context).push를 하면 화면을 기존 화면 위에 쌓게 된다.
 - pop을 사용하면 Navigator의 가장 상단에 있는 화면 즉 유저가 보고 있는 현재 화면을 스택에서 제거할 수 있다.
 - 스택에서 push와 pop이 있는데, 팬케이크를 예로 들면 push는 기존 팬케이크 위에 새 팬케이크를 두는것이고 pop은 제일 위에 있는 팬케이크를 빼는 것을 말하는것이다.
+- `feature-driven architecture` 화면별로 생각하지 않고 기능별로 생각
