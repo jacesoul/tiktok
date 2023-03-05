@@ -14,3 +14,12 @@
 - `feature-driven architecture` 화면별로 생각하지 않고 기능별로 생각
 - FractionallySizedBox는 기본적으로 Box 위젯인데 크기를 단순히 200px, 300px 픽셀로 정하는게 아니라 부모의 크기에 비례해서 크기를 정하게 해주는 위젯이다.
 - 예를 들어 부모의 크기가 1000px이고 FractionallySizedBox의 widthFactor가 1이라고 한다면, FractionallySizedBox의 너비는 부모 너비의 100%가 될것이다.
+- Font Awesome은 아이콘 라이브러리이다.
+- Flutter에도 Material, Cupertino, Google, iOS등 몇몇 아이콘이 포함되어 있다.
+- `font_awesome_flutter: 10.3.0`
+- pubspec.yaml을 통해 새로운 패키지를 설치할 때마다 기존 디버그 세션을 닫고, 새로 시작하는게 좋은 습관이다.
+- 어떤 패키지는 네이티브 쪽 무언가와 링크를 해야될 때도 있고, 에러도 좀 이상한 에러가 뜰 수도 있고, 에러가 코드 때문인지 새로 설치한 패키지 때문인지 알기 어려울 수도 있다.
+- Expanded는 Row나 Column내에서 사용할 수 있는 만큼 공간을 전부 차지하는 위젯이다.
+- Column은 여러 위젯들을 세로로 차례대로 배치할 수 있게 해준다.
+- Row는 위젯들을 옆으로 배치할 수 있도록 해준다.
+- Stack은 위젯들을 위에다가 쌓을 수 있게 해준다. 팬케이크나 카드를 쌓듯이
