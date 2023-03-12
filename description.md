@@ -24,3 +24,6 @@
 - Row는 위젯들을 옆으로 배치할 수 있도록 해준다.
 - Stack은 위젯들을 위에다가 쌓을 수 있게 해준다. 팬케이크나 카드를 쌓듯이.
 - Dart는 private, protected, public이라는 개념이 없다. 대신 만약에 메서드나 프로퍼티 이름 앞에 `_`가 있다면 다른 파일에서 보기에는 private이 되는것이다.
+- Controller는 코드, 메서드 등으로 TextField와 같은 위젯을 컨트롤 할수 있게 해준다.
+- Controller를 생성하기 위해서는 먼저 StatelessWidget을 StatefulWidget으로 변경해야한다.
+- Controller를 생성한 다음에, Controller를 위젯에 넘겨주고 그 위젯에서의 변화를 감지하면된다.
