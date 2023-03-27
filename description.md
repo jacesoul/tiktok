@@ -27,3 +27,9 @@
 - Controller는 코드, 메서드 등으로 TextField와 같은 위젯을 컨트롤 할수 있게 해준다.
 - Controller를 생성하기 위해서는 먼저 StatelessWidget을 StatefulWidget으로 변경해야한다.
 - Controller를 생성한 다음에, Controller를 위젯에 넘겨주고 그 위젯에서의 변화를 감지하면된다.
+- AnimatedDefaultTextStyle은 텍스트가 바뀔때 애니메이션 효과를 준다.
+- 모든 것의 뒤에 super.dispose()를 선언하는 것이 가장 설득력이는 답이다.
+- 위젯과 그 상태를 초기화할때 먼저 initState()를 호출한 뒤에 원하는 것을 하고 위젯이 제거되려고 할때 다른 것들을 모두 정리한뒤 super.dispose()로 마무리한다.
+- TextButton은 onPressed를 통해 눌릴때 처리할 콜백함수를 가질 수 있고 Text를 가지는 자식을 가질수 있다.
+- TextButton를 사용하지 않는 이유는 사용자 지정 UI를 만들기 때문이다.
+- username 화면에서 \_onNextTap()은 context를 받는 것이 필요하지 않다. 그 이유는 StatefulWidget안의 State안에 있다면 어디서든 context를 사용할수 있다.
