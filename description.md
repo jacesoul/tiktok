@@ -33,3 +33,4 @@
 - TextButton은 onPressed를 통해 눌릴때 처리할 콜백함수를 가질 수 있고 Text를 가지는 자식을 가질수 있다.
 - TextButton를 사용하지 않는 이유는 사용자 지정 UI를 만들기 때문이다.
 - username 화면에서 \_onNextTap()은 context를 받는 것이 필요하지 않다. 그 이유는 StatefulWidget안의 State안에 있다면 어디서든 context를 사용할수 있다.
+- TextField는 입력을 제공하는 멋진 위젯이지만 폼에 좀더 강력한 유효성 검사가 필요하고 입력 칸이 딱 하나인게 아니라면 다른 위젯으로 대체하는게 좋다.
