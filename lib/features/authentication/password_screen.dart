@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok/constants/gaps.dart';
 import 'package:tiktok/constants/sizes.dart';
-import 'package:tiktok/features/authentication/birthday_screen.dart';
 import 'package:tiktok/features/authentication/widgets/form_button.dart';
+
+import 'birthday_screen.dart';
 
 class PasswordScreen extends StatefulWidget {
   const PasswordScreen({super.key});
@@ -50,7 +51,7 @@ class _UsernameScreenState extends State<PasswordScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const BirthDayScreen(),
+        builder: (context) => const BirthdayScreen(),
       ),
     );
   }
