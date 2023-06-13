@@ -34,3 +34,7 @@
 - TextButton를 사용하지 않는 이유는 사용자 지정 UI를 만들기 때문이다.
 - username 화면에서 \_onNextTap()은 context를 받는 것이 필요하지 않다. 그 이유는 StatefulWidget안의 State안에 있다면 어디서든 context를 사용할수 있다.
 - TextField는 입력을 제공하는 멋진 위젯이지만 폼에 좀더 강력한 유효성 검사가 필요하고 입력 칸이 딱 하나인게 아니라면 다른 위젯으로 대체하는게 좋다.
+
+### ONBOARDING
+
+- onboarding은 유저가 가장 처음 앱을 실행했을때 유저를 맞이하고 앱에 관해 설명해주는 방식을 말한다.
