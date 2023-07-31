@@ -20,13 +20,14 @@ class _StfScreenState extends State<StfScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    print("");
+    print(_clicks);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    print("Built");
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
