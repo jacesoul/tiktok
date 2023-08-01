@@ -28,20 +28,22 @@ class _StfScreenState extends State<StfScreen> {
   Widget build(BuildContext context) {
     print("Built");
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "$_clicks",
-          style: const TextStyle(
-            fontSize: 28,
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "$_clicks",
+            style: const TextStyle(
+              fontSize: 48,
+            ),
           ),
-        ),
-        TextButton(
-          onPressed: _increase,
-          child: const Text("+"),
-        )
-      ],
+          TextButton(
+            onPressed: _increase,
+            child: const Text("+"),
+          )
+        ],
+      ),
     );
   }
 }
