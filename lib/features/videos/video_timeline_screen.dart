@@ -13,7 +13,7 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
 
   final PageController _pageController = PageController();
 
-  final Duration _scrollDuration = const Duration(milliseconds: 500);
+  final Duration _scrollDuration = const Duration(milliseconds: 300);
   final Curve _scrollCurve = Curves.linear;
 
   void _onPageChanged(int page) {
@@ -48,8 +48,10 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
       scrollDirection: Axis.vertical,
       onPageChanged: _onPageChanged,
       itemCount: _itemCount,
-      itemBuilder: (context, index) =>
-          VideoPost(onVideoFinished: _onVideoFinished),
+      itemBuilder: (context, index) => VideoPost(
+        onVideoFinished: _onVideoFinished,
+        index: index,
+      ),
     );
   }
 }
