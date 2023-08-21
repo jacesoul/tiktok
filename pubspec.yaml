@@ -37,7 +37,7 @@ dependencies:
 
   font_awesome_flutter: 10.3.0
 
-  video_player: ^2.4.10
+  video_player: 2.4.10
 
 dev_dependencies:
   flutter_test:
@@ -61,8 +61,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-assets:
-  - assets/videos/house.mp4
+  assets:
+    - assets/videos/house.mp4
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

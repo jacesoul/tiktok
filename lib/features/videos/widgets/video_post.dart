@@ -15,7 +15,7 @@ class VideoPost extends StatefulWidget {
 
 class _VideoPostState extends State<VideoPost> {
   final VideoPlayerController _videoPlayController =
-      VideoPlayerController.asset("assets/videos/house.mp4");
+      VideoPlayerController.asset("assets/videos/house1.mp4");
 
   void _onVideoChange() {
     if (_videoPlayController.value.isInitialized) {
@@ -30,7 +30,6 @@ class _VideoPostState extends State<VideoPost> {
     await _videoPlayController.initialize();
     _videoPlayController.play();
     setState(() {});
-
     _videoPlayController.addListener(_onVideoChange);
   }
 
@@ -44,8 +43,6 @@ class _VideoPostState extends State<VideoPost> {
   void dispose() {
     _videoPlayController.dispose();
     super.dispose();
-
-    widget.onVideoFinished();
   }
 
   @override
