@@ -50,6 +50,10 @@ class _VideoPostState extends State<VideoPost>
     _initVideoPlayer();
 
     _animationController = AnimationController(
+      // vsync는 offscreen 애니메이션의 불필요한 리소스 사용을 막는다
+      // 위젯이 보지 않을 때는 애니메이션이 작동하지 않음
+      // vsync는 애니메이션 재생을 도와주고 위젯이 위젯 tree에 있을 때만 Ticker를 유지해준다
+      // 만약 애니메이션 controller가 여러개 있다면 TickerProviderStateMixin를 사용하면 된다
       vsync: this,
       lowerBound: 1.0,
       upperBound: 1.5,
