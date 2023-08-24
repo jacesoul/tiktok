@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:marquee/marquee.dart';
+import 'package:tiktok/features/videos/widgets/video_button.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+import '../../../constants/gaps.dart';
 import '../../../constants/sizes.dart';
+
+const keywords = [
+  "tag1",
+  "tag2",
+  "tag3",
+  "tag4",
+  "tag5",
+  "tag6",
+  "tag7",
+  "tag8",
+  "tag9",
+];
 
 class VideoPost extends StatefulWidget {
   final Function onVideoFinished;
@@ -29,6 +44,12 @@ class _VideoPostState extends State<VideoPost>
 
   bool _isPaused = false;
 
+  bool _isMoreTagsShowed = false;
+
+  final Iterable<String> _tags = keywords.map((tag) => "#$tag");
+
+  late final String _tagString;
+
   void _onVideoChange() {
     if (_videoPlayController.value.isInitialized) {
       if (_videoPlayController.value.duration ==
@@ -41,13 +62,23 @@ class _VideoPostState extends State<VideoPost>
   void _initVideoPlayer() async {
     await _videoPlayController.initialize();
     setState(() {});
+    await _videoPlayController.setLooping(true);
     _videoPlayController.addListener(_onVideoChange);
+  }
+
+  void _onSeeMoreClick() {
+    setState(() {
+      _isMoreTagsShowed = !_isMoreTagsShowed;
+    });
   }
 
   @override
   void initState() {
     super.initState();
     _initVideoPlayer();
+
+    _tagString = _tags.reduce((value, element) => "$value $element");
+    print(_tagString);
 
     _animationController = AnimationController(
       // vsync는 offscreen 애니메이션의 불필요한 리소스 사용을 막는다
@@ -94,6 +125,7 @@ class _VideoPostState extends State<VideoPost>
       onVisibilityChanged: _onVisibilityChanged,
       child: Stack(
         children: [
+          // Positioned 위젯은 stack안에서 원하는 위치에 위젯을 넣을수 있다
           Positioned.fill(
             child: _videoPlayController.value.isInitialized
                 ? VideoPlayer(_videoPlayController)
@@ -129,7 +161,140 @@ class _VideoPostState extends State<VideoPost>
                 ),
               ),
             ),
-          )
+          ),
+          Positioned(
+            bottom: 20,
+            left: 15,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "@jace",
+                  style: TextStyle(
+                    fontSize: Sizes.size20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Gaps.v10,
+                const Text(
+                  "This is my house in Seoul🏠",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                Gaps.v10,
+                SizedBox(
+                  width: 300,
+                  child: _isMoreTagsShowed
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              _tagString,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: Sizes.size16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: _onSeeMoreClick,
+                              child: const Text(
+                                "Folded",
+                                style: TextStyle(
+                                  color: Colors.green,
+                                  fontSize: Sizes.size16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      : Row(
+                          children: [
+                            Flexible(
+                              child: Text(
+                                _tagString,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: _onSeeMoreClick,
+                              child: const Text(
+                                "See more",
+                                style: TextStyle(
+                                  color: Colors.green,
+                                  fontSize: Sizes.size16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                ),
+                Gaps.v10,
+                Row(
+                  children: [
+                    const FaIcon(
+                      FontAwesomeIcons.music,
+                      size: 16,
+                      color: Colors.white,
+                    ),
+                    Gaps.h8,
+                    SizedBox(
+                      width: 200,
+                      height: 16,
+                      child: Marquee(
+                        text:
+                            "This text is to long to be shown in just on line",
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: Sizes.size16,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            right: 10,
+            child: Column(
+              children: const [
+                // CircleAvatar는 이미지가 들어있는 원을 제공한다
+                CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  foregroundImage: NetworkImage(
+                      "https://avatars.githubusercontent.com/u/107394342?"),
+                  child: Text("JACE"),
+                ),
+                Gaps.v20,
+                VideoButton(
+                  icon: FontAwesomeIcons.solidHeart,
+                  text: "2.9M",
+                ),
+                Gaps.v20,
+                VideoButton(
+                  icon: FontAwesomeIcons.solidComment,
+                  text: "33K",
+                ),
+                Gaps.v20,
+                VideoButton(
+                  icon: FontAwesomeIcons.share,
+                  text: "Share",
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -41,6 +41,8 @@ dependencies:
 
   visibility_detector: 0.3.3
 
+  marquee: 2.2.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
