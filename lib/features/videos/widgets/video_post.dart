@@ -79,7 +79,6 @@ class _VideoPostState extends State<VideoPost>
     _initVideoPlayer();
 
     _tagString = _tags.reduce((value, element) => "$value $element");
-    print(_tagString);
 
     _animationController = AnimationController(
       // vsync는 offscreen 애니메이션의 불필요한 리소스 사용을 막는다
