@@ -1,0 +1,38 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Android Phone",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "Device Name"
+    },
+    {
+      "name": "Android Tablet",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "Device Name"
+    },
+    {
+      "name": "Apple iPad",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "Device Name"
+    },
+    {
+      "name": "Apple iPhone",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "iPhone 14 Pro Max"
+    },
+    {
+      "name": "Web",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "chrome"
+    }
+  ]
+}
