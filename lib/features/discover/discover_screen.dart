@@ -1,7 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok/constants/gaps.dart';
 import 'package:tiktok/constants/sizes.dart';
+
+/// 코드 챌린지
+/// 1. 탭을 이동할때 키보드가 사라지도록하기
+/// 2. 검색창 만들기
 
 final tabs = [
   "Top",
@@ -13,17 +18,45 @@ final tabs = [
   "Brands",
 ];
 
-class DiscoverScreen extends StatelessWidget {
+class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
+
+  @override
+  State<DiscoverScreen> createState() => _DiscoverScreenState();
+}
+
+class _DiscoverScreenState extends State<DiscoverScreen> {
+  // controller를 만들때는 dispose를 잊으면 안된다.
+  final TextEditingController _textEditingController =
+      TextEditingController(text: "Initial Text");
+
+  void _onSearchChanged(String value) {
+    print("Searching for $value");
+  }
+
+  void _onSearchSubmitted(String value) {
+    print("Submitted $value");
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           elevation: 1,
-          title: const Text("Discover"),
+          title: CupertinoSearchTextField(
+            controller: _textEditingController,
+            onChanged: _onSearchChanged,
+            onSubmitted: _onSearchSubmitted,
+          ),
           // bottom은 PreferredSizeWidget이라는 type을 가진다.
           // PreferredSizeWidget이란 특정한 크기를 가지려고 하지만 자식요소의 크기를 제한하지는 않는 위젯이다.
           bottom: TabBar(
@@ -50,6 +83,7 @@ class DiscoverScreen extends StatelessWidget {
         body: TabBarView(children: [
           // builder를 사용하는게 더 좋은 퍼포먼스를 보여줄수 있다.
           GridView.builder(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             padding: const EdgeInsets.all(
               Sizes.size6,
             ),
@@ -63,13 +97,21 @@ class DiscoverScreen extends StatelessWidget {
             ),
             itemBuilder: (context, index) => Column(
               children: [
-                AspectRatio(
-                  aspectRatio: 9 / 16,
-                  child: FadeInImage.assetNetwork(
-                    fit: BoxFit.cover,
-                    placeholder: "assets/images/david-becker-unsplash.jpeg",
-                    image:
-                        "https://images.unsplash.com/photo-1695757429514-edf36f4c4e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
+                Container(
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      Sizes.size4,
+                    ),
+                  ),
+                  child: AspectRatio(
+                    aspectRatio: 9 / 16,
+                    child: FadeInImage.assetNetwork(
+                      fit: BoxFit.cover,
+                      placeholder: "assets/images/david-becker-unsplash.jpeg",
+                      image:
+                          "https://images.unsplash.com/photo-1695757429514-edf36f4c4e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
+                    ),
                   ),
                 ),
                 Gaps.v10,
