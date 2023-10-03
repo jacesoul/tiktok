@@ -7,6 +7,7 @@ import 'package:tiktok/features/videos/video_timeline_screen.dart';
 import '../../constants/gaps.dart';
 import '../../constants/sizes.dart';
 import '../discover/discover_screen.dart';
+import '../inbox/inbox_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -53,12 +54,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             child: const DiscoverScreen(),
           ),
           Offstage(
-            offstage: _selectedIndex != 2,
-            child: Container(),
-          ),
-          Offstage(
             offstage: _selectedIndex != 3,
-            child: Container(),
+            child: const InboxScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 4,
