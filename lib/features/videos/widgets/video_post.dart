@@ -38,7 +38,8 @@ class VideoPost extends StatefulWidget {
 class _VideoPostState extends State<VideoPost>
     with SingleTickerProviderStateMixin {
   final VideoPlayerController _videoPlayController =
-      VideoPlayerController.asset("assets/videos/mute-house.mp4");
+      VideoPlayerController.asset(
+          "assets/videos/pexels-matthias-groeneveld.mp4");
   final Duration _animationDuration = const Duration(milliseconds: 300);
 
   late final AnimationController _animationController;
