@@ -29,6 +29,12 @@
       "deviceId": "iPhone 14 Pro Max"
     },
     {
+      "name": "iPhone 15 Pro Max",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "iPhone 15 Pro Max"
+    },
+    {
       "name": "Web",
       "request": "launch",
       "type": "dart",
