@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok/constants/sizes.dart';
+import 'package:tiktok/features/inbox/chat_detail_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -11,19 +12,80 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
-
   final List<int> _items = [];
+  final Duration _duration = const Duration(
+    milliseconds: 300,
+  );
 
   void addItem() {
     if (_listKey.currentState != null) {
       _listKey.currentState!.insertItem(
         _items.length,
-        duration: const Duration(
-          milliseconds: 500,
-        ),
+        duration: _duration,
       );
       _items.add(_items.length);
     }
+  }
+
+  void _deleteItem(int index) {
+    if (_listKey.currentState != null) {
+      _listKey.currentState!.removeItem(
+        index,
+        (context, animation) => SizeTransition(
+          sizeFactor: animation,
+          child: Container(
+            color: Colors.red,
+            child: _makeTile(index),
+          ),
+        ),
+        duration: _duration,
+      );
+      _items.removeAt(index);
+    }
+  }
+
+  void _onChatTap() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const ChatDetailScreen(),
+      ),
+    );
+  }
+
+  Widget _makeTile(int index) {
+    return ListTile(
+      onLongPress: () => _deleteItem(index),
+      onTap: _onChatTap,
+      leading: const CircleAvatar(
+        radius: 30,
+        foregroundImage: NetworkImage(
+          "https://plus.unsplash.com/premium_photo-1694467832488-9bc48ff8d112?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2360&q=80",
+        ),
+        child: Text("제이스"),
+      ),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            "Jiwoo ($index)",
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          Text(
+            "2:16 PM",
+            style: TextStyle(
+              color: Colors.grey.shade500,
+              fontSize: Sizes.size12,
+            ),
+          ),
+        ],
+      ),
+      subtitle: const Text(
+        "Say hi to your friends",
+      ),
+    );
   }
 
   @override
@@ -59,42 +121,9 @@ class _ChatScreenState extends State<ChatScreen> {
           return FadeTransition(
             key: UniqueKey(),
             opacity: animation,
-            child: ScaleTransition(
-              scale: animation,
-              child: SizeTransition(
-                sizeFactor: animation,
-                child: ListTile(
-                  leading: const CircleAvatar(
-                    radius: 30,
-                    foregroundImage: NetworkImage(
-                      "https://plus.unsplash.com/premium_photo-1694467832488-9bc48ff8d112?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2360&q=80",
-                    ),
-                    child: Text("제이스"),
-                  ),
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        "Jiwoo ($index)",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Text(
-                        "2:16 PM",
-                        style: TextStyle(
-                          color: Colors.grey.shade500,
-                          fontSize: Sizes.size12,
-                        ),
-                      ),
-                    ],
-                  ),
-                  subtitle: const Text(
-                    "Say hi to your friends",
-                  ),
-                ),
-              ),
+            child: SizeTransition(
+              sizeFactor: animation,
+              child: _makeTile(index),
             ),
           );
         },
