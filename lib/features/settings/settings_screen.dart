@@ -78,7 +78,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             textColor: Colors.red,
             onTap: () {
-              showCupertinoDialog(
+              showCupertinoModalPopup(
                 context: context,
                 builder: (context) => CupertinoAlertDialog(
                   title: const Text('Are you sure?'),
@@ -100,21 +100,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           ListTile(
             title: const Text(
-              "Log out(Android)",
+              "Log out(iOS / Bottom)",
             ),
             textColor: Colors.blue,
             onTap: () {
-              showDialog(
+              showCupertinoModalPopup(
                 context: context,
-                builder: (context) => AlertDialog(
+                builder: (context) => CupertinoActionSheet(
                   title: const Text('Are you sure?'),
-                  content: const Text('Do you want to log out?'),
+                  message: const Text('Do you want to log out?'),
                   actions: [
-                    TextButton(
+                    CupertinoActionSheetAction(
+                      isDefaultAction: true,
                       onPressed: () => Navigator.of(context).pop(),
                       child: const Text('No'),
                     ),
-                    TextButton(
+                    CupertinoActionSheetAction(
+                      isDestructiveAction: true,
                       onPressed: () => Navigator.of(context).pop(),
                       child: const Text('Yes'),
                     ),
