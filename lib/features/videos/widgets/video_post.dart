@@ -101,6 +101,10 @@ class _VideoPostState extends State<VideoPost>
   }
 
   void _onVisibilityChanged(VisibilityInfo info) {
+    // 모든 Statefull Widget에는 mounted라는 프로퍼티가 있다.
+    // mounted 프로퍼티는 Widget이 mount 되었는지 아닌지 알려준다.
+    // 만약 mounted되지 않았다면, 사용자들에게 더 이상 보이지 않는다.
+    if (!mounted) return;
     if (info.visibleFraction == 1 &&
         !_isPaused &&
         !_videoPlayController.value.isPlaying) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok/constants/gaps.dart';
 import 'package:tiktok/constants/sizes.dart';
+import 'package:tiktok/features/settings/settings_screen.dart';
 import 'package:tiktok/features/user/widgets/persistent_tab_bar.dart';
 
 class UserProfileScreen extends StatefulWidget {
@@ -15,6 +16,14 @@ class UserProfileScreen extends StatefulWidget {
 // 그렇기 때문에 그냥 column을 render할수 없다.
 // column을 render하기 위해 sliver가 필요하다.
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  void _onGearPressed() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const SettingsScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,7 +39,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 title: const Text("jace"),
                 actions: [
                   IconButton(
-                      onPressed: () {},
+                      onPressed: _onGearPressed,
                       icon: const FaIcon(
                         FontAwesomeIcons.gear,
                         size: Sizes.size20,
