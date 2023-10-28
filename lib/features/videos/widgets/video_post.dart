@@ -38,15 +38,13 @@ class VideoPost extends StatefulWidget {
 
 class _VideoPostState extends State<VideoPost>
     with SingleTickerProviderStateMixin {
-  final VideoPlayerController _videoPlayController =
-      VideoPlayerController.asset(
-          "assets/videos/pexels-matthias-groeneveld.mp4");
+  late final VideoPlayerController _videoPlayController;
+
   final Duration _animationDuration = const Duration(milliseconds: 300);
 
   late final AnimationController _animationController;
 
   bool _isPaused = false;
-
   bool _isMoreTagsShowed = false;
 
   final Iterable<String> _tags = keywords.map((tag) => "#$tag");
@@ -63,13 +61,15 @@ class _VideoPostState extends State<VideoPost>
   }
 
   void _initVideoPlayer() async {
+    _videoPlayController = VideoPlayerController.asset(
+        "assets/videos/pexels-matthias-groeneveld.mp4");
+
     await _videoPlayController.initialize();
     await _videoPlayController.setLooping(true);
     // kIsWeb은 이 앱이 웹에서 작동하도록 compile 되어있는지를 나타내는 constant이다
     if (kIsWeb) {
       await _videoPlayController.setVolume(0);
     }
-
     _videoPlayController.addListener(_onVideoChange);
     setState(() {});
   }
