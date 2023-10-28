@@ -14,6 +14,7 @@ class AuthButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // FractionallySizedBox는 가능한 큰 공간을 차지하면서 자식 위젯의 크기를 지정할 수 있다.
     return FractionallySizedBox(
       widthFactor: 1,
       child: Container(
