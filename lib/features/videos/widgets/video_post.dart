@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marquee/marquee.dart';
@@ -63,9 +64,14 @@ class _VideoPostState extends State<VideoPost>
 
   void _initVideoPlayer() async {
     await _videoPlayController.initialize();
-    setState(() {});
     await _videoPlayController.setLooping(true);
+    // kIsWeb은 이 앱이 웹에서 작동하도록 compile 되어있는지를 나타내는 constant이다
+    if (kIsWeb) {
+      await _videoPlayController.setVolume(0);
+    }
+
     _videoPlayController.addListener(_onVideoChange);
+    setState(() {});
   }
 
   void _onSeeMoreClick() {
