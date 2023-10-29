@@ -95,73 +95,76 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
               mainAxisSpacing: Sizes.size10,
               childAspectRatio: 9 / 20,
             ),
-            itemBuilder: (context, index) => Column(
-              children: [
-                Container(
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      Sizes.size4,
+            itemBuilder: (context, index) => LayoutBuilder(
+              builder: (context, constraints) => Column(
+                children: [
+                  Container(
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        Sizes.size4,
+                      ),
+                    ),
+                    child: AspectRatio(
+                      aspectRatio: 9 / 16,
+                      child: FadeInImage.assetNetwork(
+                        fit: BoxFit.cover,
+                        placeholder: "assets/images/david-becker-unsplash.jpeg",
+                        image:
+                            "https://images.unsplash.com/photo-1695757429514-edf36f4c4e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
+                      ),
                     ),
                   ),
-                  child: AspectRatio(
-                    aspectRatio: 9 / 16,
-                    child: FadeInImage.assetNetwork(
-                      fit: BoxFit.cover,
-                      placeholder: "assets/images/david-becker-unsplash.jpeg",
-                      image:
-                          "https://images.unsplash.com/photo-1695757429514-edf36f4c4e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80",
+                  Gaps.v10,
+                  Text(
+                    "${constraints.maxWidth} This is a very long catpion for my tiktok that I'm upload just now currently.",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: Sizes.size16 + Sizes.size2,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-                Gaps.v10,
-                const Text(
-                  "This is a very long catpion for my tiktok that I'm upload just now currently.",
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: Sizes.size16 + Sizes.size2,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Gaps.v5,
-                // DefaultTextStyle을 지정하면 그 안에 있는 모든 Text가 같은 스타일을 가지게된다.
-                DefaultTextStyle(
-                  style: TextStyle(
-                    color: Colors.grey.shade500,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  child: Row(
-                    children: [
-                      const CircleAvatar(
-                        radius: 12,
-                        backgroundImage: NetworkImage(
-                          "https://images.unsplash.com/photo-1695843126800-b42849a648d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2860&q=80",
-                        ),
-                      ),
-                      Gaps.h4,
-                      // Expanded는 오직 해당 Row 내부에서 가능한 한 많은 공간을 차지한다.
-                      const Expanded(
-                        child: Text(
-                          "My avatar is going to be very long.",
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      Gaps.h4,
-                      FaIcon(
-                        FontAwesomeIcons.heart,
-                        size: Sizes.size16,
+                  Gaps.v5,
+                  // DefaultTextStyle을 지정하면 그 안에 있는 모든 Text가 같은 스타일을 가지게된다.
+                  if (constraints.maxWidth < 200 || constraints.maxWidth > 250)
+                    DefaultTextStyle(
+                      style: TextStyle(
                         color: Colors.grey.shade500,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Gaps.h2,
-                      const Text(
-                        "2.5M",
-                      )
-                    ],
-                  ),
-                )
-              ],
+                      child: Row(
+                        children: [
+                          const CircleAvatar(
+                            radius: 12,
+                            backgroundImage: NetworkImage(
+                              "https://images.unsplash.com/photo-1695843126800-b42849a648d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2860&q=80",
+                            ),
+                          ),
+                          Gaps.h4,
+                          // Expanded는 오직 해당 Row 내부에서 가능한 한 많은 공간을 차지한다.
+                          const Expanded(
+                            child: Text(
+                              "My avatar is going to be very long.",
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Gaps.h4,
+                          FaIcon(
+                            FontAwesomeIcons.heart,
+                            size: Sizes.size16,
+                            color: Colors.grey.shade500,
+                          ),
+                          Gaps.h2,
+                          const Text(
+                            "2.5M",
+                          )
+                        ],
+                      ),
+                    )
+                ],
+              ),
             ),
           ),
           for (var tab in tabs.skip(1))
