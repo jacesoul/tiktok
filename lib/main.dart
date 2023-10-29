@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tiktok/features/main_navigation/main_navigation_screen.dart';
+import 'package:tiktok/features/authentication/login_screen.dart';
 
 import 'constants/sizes.dart';
 
@@ -31,24 +31,43 @@ class TikTokApp extends StatelessWidget {
         // 화면에 나오는 디버그 배너를 없애준다.
         debugShowCheckedModeBanner: false,
         title: 'TikTok',
+        // themeMode는 휴대폰한테 어떤 theme을 사용할지 알려주는 기능을 한다.
+        // system은 앱이 실행되는 기기의 환경에 맞추는것이다.
+        themeMode: ThemeMode.system,
         theme: ThemeData(
-            scaffoldBackgroundColor: Colors.white,
-            primaryColor: const Color(0xffe9435a),
-            textSelectionTheme: const TextSelectionThemeData(
-              cursorColor: Color(0xffe9435a),
+          brightness: Brightness.light,
+          scaffoldBackgroundColor: Colors.white,
+          bottomAppBarTheme: BottomAppBarTheme(
+            color: Colors.grey.shade50,
+          ),
+          primaryColor: const Color(0xffe9435a),
+          textSelectionTheme: const TextSelectionThemeData(
+            cursorColor: Color(0xffe9435a),
+          ),
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          appBarTheme: const AppBarTheme(
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.white,
+            elevation: 0,
+            titleTextStyle: TextStyle(
+              color: Colors.black,
+              fontSize: Sizes.size16 + Sizes.size2,
+              fontWeight: FontWeight.w600,
             ),
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            appBarTheme: const AppBarTheme(
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.white,
-                elevation: 0,
-                titleTextStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: Sizes.size16 + Sizes.size2,
-                  fontWeight: FontWeight.w600,
-                ))),
-        home: const MainNavigationScreen());
+          ),
+        ),
+        // dark모드와 light 모드를 한번에 같이 만드는게 light 모드를 먼저 완성한 다음 dark 모드를 적용하는 것보다 쉽다.
+        // flutter에서는 light 모드에서 dark 모드로 바꾸는 것이 쉽다.
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: Colors.black,
+          bottomAppBarTheme: BottomAppBarTheme(
+            color: Colors.grey.shade800,
+          ),
+          primaryColor: const Color(0xffe9435a),
+        ),
+        home: const LoginScreen());
   }
 }
 
