@@ -52,10 +52,17 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           elevation: 1,
-          title: CupertinoSearchTextField(
-            controller: _textEditingController,
-            onChanged: _onSearchChanged,
-            onSubmitted: _onSearchSubmitted,
+          title: ConstrainedBox(
+            // Container를 사용해도 constraints를 받을수 있다.
+            // ConstrainedBox는 단지 constraints를 받아들이는 Container일 뿐이다.
+            constraints: const BoxConstraints(
+              maxWidth: Breakpoints.sm,
+            ),
+            child: CupertinoSearchTextField(
+              controller: _textEditingController,
+              onChanged: _onSearchChanged,
+              onSubmitted: _onSearchSubmitted,
+            ),
           ),
           // bottom은 PreferredSizeWidget이라는 type을 가진다.
           // PreferredSizeWidget이란 특정한 크기를 가지려고 하지만 자식요소의 크기를 제한하지는 않는 위젯이다.
