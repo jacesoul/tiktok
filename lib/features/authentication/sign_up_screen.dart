@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktok/constants/gaps.dart';
 import 'package:tiktok/constants/sizes.dart';
 import 'package:tiktok/features/authentication/username_screen.dart';
@@ -51,9 +52,12 @@ class SignUpScreen extends StatelessWidget {
                   // headlineSmall이 정의되어 있다는걸 dart에 알려주기 위해 ! 를 추가해줘야한다.
                   Text(
                     "Sign up for TikTok",
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                          color: Colors.green,
-                        ),
+                    style: GoogleFonts.lato(
+                      textStyle:
+                          Theme.of(context).textTheme.headlineSmall!.copyWith(
+                                fontSize: Sizes.size32,
+                              ),
+                    ),
                   ),
                   Gaps.v20,
                   const Opacity(
