@@ -43,6 +43,8 @@ dependencies:
 
   marquee: 2.2.3
 
+  google_fonts: 4.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

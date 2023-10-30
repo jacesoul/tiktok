@@ -5,6 +5,7 @@ import 'package:tiktok/constants/sizes.dart';
 import 'package:tiktok/features/authentication/username_screen.dart';
 import 'package:tiktok/features/authentication/login_screen.dart';
 import 'package:tiktok/features/authentication/widgets/auth_button.dart';
+import 'package:tiktok/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -38,7 +39,6 @@ class SignUpScreen extends StatelessWidget {
           ));
         } */
         return Scaffold(
-          backgroundColor: Colors.white,
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -47,12 +47,13 @@ class SignUpScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Gaps.v80,
-                  const Text(
+                  // copyWith은 style은 그대로 사용하고 거기에 다른 요소를 추가할수 있다.
+                  // headlineSmall이 정의되어 있다는걸 dart에 알려주기 위해 ! 를 추가해줘야한다.
+                  Text(
                     "Sign up for TikTok",
-                    style: TextStyle(
-                      fontSize: Sizes.size24,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          color: Colors.green,
+                        ),
                   ),
                   Gaps.v20,
                   const Opacity(
@@ -116,7 +117,7 @@ class SignUpScreen extends StatelessWidget {
           bottomNavigationBar: BottomAppBar(
             // shadow를 없애준다.
             elevation: 2,
-            color: Colors.grey.shade50,
+            color: isDarkMode(context) ? null : Colors.grey.shade50,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: Sizes.size36,
