@@ -59,9 +59,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     Gaps.v20,
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           "@jace",
                           style: TextStyle(
@@ -83,8 +83,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Column(
-                            children: [
+                          Column(
+                            children: const [
                               Text(
                                 "37",
                                 style: TextStyle(
@@ -111,8 +111,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             endIndent: Sizes.size12,
                             color: Colors.grey.shade400,
                           ),
-                          const Column(
-                            children: [
+                          Column(
+                            children: const [
                               Text(
                                 "10.5M",
                                 style: TextStyle(
@@ -138,8 +138,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             endIndent: Sizes.size12,
                             color: Colors.grey.shade400,
                           ),
-                          const Column(
-                            children: [
+                          Column(
+                            children: const [
                               Text(
                                 "149.3M",
                                 style: TextStyle(
@@ -199,9 +199,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     Gaps.v14,
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         FaIcon(
                           FontAwesomeIcons.link,
                           size: Sizes.size14,
