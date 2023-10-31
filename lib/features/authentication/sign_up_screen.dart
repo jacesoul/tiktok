@@ -55,7 +55,7 @@ class SignUpScreen extends StatelessWidget {
                     style: GoogleFonts.lato(
                       textStyle:
                           Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                fontSize: Sizes.size32,
+                                fontSize: Sizes.size28,
                               ),
                     ),
                   ),

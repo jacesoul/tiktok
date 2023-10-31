@@ -54,7 +54,6 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
       onRefresh: _onRefresh,
       displacement: 50,
       edgeOffset: 10,
-      backgroundColor: Colors.white,
       color: Theme.of(context).primaryColor,
       child: PageView.builder(
         controller: _pageController,

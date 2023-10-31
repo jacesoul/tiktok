@@ -92,12 +92,13 @@ class TikTokApp extends StatelessWidget {
       // flutter에서는 light 모드에서 dark 모드로 바꾸는 것이 쉽다.
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        textTheme: GoogleFonts.montserratTextTheme(
-          ThemeData(brightness: Brightness.dark).textTheme,
-        ),
+        textTheme: Typography.whiteMountainView,
         scaffoldBackgroundColor: Colors.black,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.grey.shade900,
+        ),
         bottomAppBarTheme: BottomAppBarTheme(
-          color: Colors.grey.shade800,
+          color: Colors.grey.shade900,
         ),
         primaryColor: const Color(0xffe9435a),
       ),

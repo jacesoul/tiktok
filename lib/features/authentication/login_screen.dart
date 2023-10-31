@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktok/constants/gaps.dart';
 import 'package:tiktok/constants/sizes.dart';
 import 'package:tiktok/features/authentication/login_form_screen.dart';
@@ -34,17 +35,25 @@ class LoginScreen extends StatelessWidget {
               Gaps.v80,
               Text(
                 "Log in to TikTok",
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: GoogleFonts.lato(
+                  textStyle:
+                      Theme.of(context).textTheme.headlineSmall!.copyWith(
+                            fontSize: Sizes.size28,
+                          ),
+                ),
               ),
               Gaps.v20,
               const Opacity(
                 opacity: 0.7,
-                child: Text(
-                  "Manage your acocunt, check notifications, comment on videos, and more.",
-                  style: TextStyle(
-                    fontSize: Sizes.size16,
+                child: Opacity(
+                  opacity: 0.7,
+                  child: Text(
+                    "Manage your acocunt, check notifications, comment on videos, and more.",
+                    style: TextStyle(
+                      fontSize: Sizes.size16,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
               Gaps.v40,

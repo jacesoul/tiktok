@@ -70,7 +70,6 @@ class _UsernameScreenState extends State<PasswordScreen> {
     return GestureDetector(
       onTap: _onScaffoldTap,
       child: Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
           title: const Text(
@@ -156,7 +155,6 @@ class _UsernameScreenState extends State<PasswordScreen> {
                     "8 to 20 characters",
                     style: TextStyle(
                       fontSize: Sizes.size14,
-                      color: Colors.black,
                     ),
                   ),
                 ],
