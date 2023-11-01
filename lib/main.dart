@@ -92,6 +92,9 @@ class TikTokApp extends StatelessWidget {
           unselectedLabelColor: Colors.grey.shade500,
           indicatorColor: Colors.black,
         ),
+        listTileTheme: const ListTileThemeData(
+          iconColor: Colors.black,
+        ),
       ),
       // dark모드와 light 모드를 한번에 같이 만드는게 light 모드를 먼저 완성한 다음 dark 모드를 적용하는 것보다 쉽다.
       // flutter에서는 light 모드에서 dark 모드로 바꾸는 것이 쉽다.
