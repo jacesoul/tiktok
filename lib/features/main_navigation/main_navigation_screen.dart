@@ -4,6 +4,7 @@ import 'package:tiktok/features/main_navigation/widgets/nav_tab.dart';
 import 'package:tiktok/features/main_navigation/widgets/post_video_button.dart';
 import 'package:tiktok/features/user/user_profile_screen.dart';
 import 'package:tiktok/features/videos/video_timeline_screen.dart';
+import 'package:tiktok/utils.dart';
 
 import '../../constants/gaps.dart';
 import '../../constants/sizes.dart';
@@ -41,6 +42,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = isDarkMode(context);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: _selectedIndex == 0 ? Colors.black : Colors.white,
@@ -65,7 +68,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        color: _selectedIndex == 0 ? Colors.black : Colors.white,
+        color: _selectedIndex == 0 || isDark ? Colors.black : Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(Sizes.size12),
           child: Row(

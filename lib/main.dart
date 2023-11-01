@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tiktok/features/authentication/sign_up_screen.dart';
+import 'package:tiktok/features/main_navigation/main_navigation_screen.dart';
 
 import 'constants/sizes.dart';
 
@@ -87,10 +87,21 @@ class TikTokApp extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
+        tabBarTheme: TabBarTheme(
+          labelColor: Colors.black,
+          unselectedLabelColor: Colors.grey.shade500,
+          indicatorColor: Colors.black,
+        ),
       ),
       // dark모드와 light 모드를 한번에 같이 만드는게 light 모드를 먼저 완성한 다음 dark 모드를 적용하는 것보다 쉽다.
       // flutter에서는 light 모드에서 dark 모드로 바꾸는 것이 쉽다.
       darkTheme: ThemeData(
+        tabBarTheme: const TabBarTheme(
+          indicatorColor: Colors.white,
+        ),
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Color(0xffe9435a),
+        ),
         brightness: Brightness.dark,
         textTheme: Typography.whiteMountainView,
         scaffoldBackgroundColor: Colors.black,
@@ -102,7 +113,7 @@ class TikTokApp extends StatelessWidget {
         ),
         primaryColor: const Color(0xffe9435a),
       ),
-      home: const SignUpScreen(),
+      home: const MainNavigationScreen(),
     );
   }
 }

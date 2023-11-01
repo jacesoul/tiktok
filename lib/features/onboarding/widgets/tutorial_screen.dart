@@ -64,9 +64,9 @@ class _TutorialScreenState extends State<TutorialScreen> {
               horizontal: Sizes.size24,
             ),
             child: AnimatedCrossFade(
-              firstChild: Column(
+              firstChild: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Gaps.v80,
                   Text(
                     "Watch cool videos!",
@@ -84,9 +84,9 @@ class _TutorialScreenState extends State<TutorialScreen> {
                   ),
                 ],
               ),
-              secondChild: Column(
+              secondChild: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Gaps.v80,
                   Text(
                     "Follow the rules",

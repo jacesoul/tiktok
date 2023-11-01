@@ -15,25 +15,25 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: ListTile(
+        title: const ListTile(
           contentPadding: EdgeInsets.zero,
           horizontalTitleGap: Sizes.size10,
-          leading: const CircleAvatar(
+          leading: CircleAvatar(
             foregroundImage: NetworkImage(
               "https://plus.unsplash.com/premium_photo-1694467832488-9bc48ff8d112?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2360&q=80",
             ),
             child: Text("제이스"),
           ),
-          title: const Text(
+          title: Text(
             "제이스",
             style: TextStyle(
               fontWeight: FontWeight.w600,
             ),
           ),
-          subtitle: const Text("Active now"),
+          subtitle: Text("Active now"),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
-            children: const [
+            children: [
               FaIcon(
                 FontAwesomeIcons.flag,
                 color: Colors.black,
@@ -100,8 +100,8 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
             width: MediaQuery.of(context).size.width,
             child: BottomAppBar(
               color: Colors.grey.shade50,
-              child: Row(
-                children: const [
+              child: const Row(
+                children: [
                   Expanded(
                     child: TextField(),
                   ),
