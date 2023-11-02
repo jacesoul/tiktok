@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tiktok/features/main_navigation/main_navigation_screen.dart';
+import 'package:tiktok/features/authentication/login_screen.dart';
 
 import 'constants/sizes.dart';
 
@@ -116,39 +116,7 @@ class TikTokApp extends StatelessWidget {
         ),
         primaryColor: const Color(0xffe9435a),
       ),
-      home: const MainNavigationScreen(),
-    );
-  }
-}
-
-class LayoutBuilderCodeLab extends StatelessWidget {
-  const LayoutBuilderCodeLab({super.key});
-
-// LayoutBuilder는 화면 크기가 아닌 box의 최대 크기를 알기 위해 사용한다.
-// LayoutBuilder가 Container가 어느정도의 크기인지를 알려준다.
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: SizedBox(
-        width: size.width / 2,
-        child: LayoutBuilder(
-          builder: (context, constraints) => Container(
-            width: constraints.maxWidth,
-            height: constraints.maxHeight,
-            color: Colors.teal,
-            child: Center(
-              child: Text(
-                "${size.width} / ${constraints.maxWidth}",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 98,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+      home: const LoginScreen(),
     );
   }
 }

@@ -52,10 +52,11 @@ class SignUpScreen extends StatelessWidget {
                   // headlineSmall이 정의되어 있다는걸 dart에 알려주기 위해 ! 를 추가해줘야한다.
                   Text(
                     "Sign up for TikTok",
-                    style: GoogleFonts.lato(
+                    style: GoogleFonts.mulish(
                       textStyle:
                           Theme.of(context).textTheme.headlineSmall!.copyWith(
                                 fontSize: Sizes.size28,
+                                fontWeight: FontWeight.w600,
                               ),
                     ),
                   ),
