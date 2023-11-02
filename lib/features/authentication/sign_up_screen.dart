@@ -119,13 +119,13 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
           ),
-          bottomNavigationBar: BottomAppBar(
+          bottomNavigationBar: Container(
             // shadow를 없애준다.
-            elevation: 2,
             color: isDarkMode(context) ? null : Colors.grey.shade50,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: Sizes.size36,
+              padding: const EdgeInsets.only(
+                top: Sizes.size36,
+                bottom: Sizes.size60,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

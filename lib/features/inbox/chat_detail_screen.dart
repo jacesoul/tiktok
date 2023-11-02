@@ -98,7 +98,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
           Positioned(
             bottom: 0,
             width: MediaQuery.of(context).size.width,
-            child: BottomAppBar(
+            child: Container(
               color: Colors.grey.shade50,
               child: const Row(
                 children: [

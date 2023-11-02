@@ -80,7 +80,7 @@ class _VideoCommentsState extends State<VideoComments> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CircleAvatar(
-                        radius: 18,
+                        radius: 24,
                         backgroundColor: isDark ? Colors.grey.shade500 : null,
                         child: const Text("Jace"),
                       ),
@@ -129,7 +129,8 @@ class _VideoCommentsState extends State<VideoComments> {
               Positioned(
                   bottom: 0,
                   width: size.width,
-                  child: BottomAppBar(
+                  child: Container(
+                    color: Theme.of(context).scaffoldBackgroundColor,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: Sizes.size16,
@@ -140,7 +141,7 @@ class _VideoCommentsState extends State<VideoComments> {
                           CircleAvatar(
                             backgroundColor: Colors.grey.shade500,
                             foregroundColor: Colors.white,
-                            radius: 18,
+                            radius: 24,
                             child: const Text(
                               "Jace",
                             ),

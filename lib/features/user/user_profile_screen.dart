@@ -92,7 +92,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                   "37",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w900,
-                                    fontSize: Sizes.size18,
+                                    fontSize: Sizes.size16,
                                   ),
                                 ),
                                 Gaps.v5,
@@ -100,7 +100,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                   "Following",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: Sizes.size16,
+                                    fontSize: Sizes.size14,
                                     color: Colors.grey,
                                   ),
                                 ),
@@ -120,7 +120,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                   "10.5M",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w900,
-                                    fontSize: Sizes.size18,
+                                    fontSize: Sizes.size16,
                                   ),
                                 ),
                                 Gaps.v5,
@@ -128,7 +128,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                   "Follwers",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: Sizes.size16,
+                                    fontSize: Sizes.size14,
                                     color: Colors.grey,
                                   ),
                                 ),
@@ -147,7 +147,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                   "149.3M",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w900,
-                                    fontSize: Sizes.size18,
+                                    fontSize: Sizes.size16,
                                   ),
                                 ),
                                 Gaps.v5,
@@ -155,7 +155,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                   "Likes",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: Sizes.size16,
+                                    fontSize: Sizes.size14,
                                     color: Colors.grey,
                                   ),
                                 ),

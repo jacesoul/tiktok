@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tiktok/features/authentication/login_screen.dart';
+import 'package:tiktok/features/authentication/sign_up_screen.dart';
 
 import 'constants/sizes.dart';
 
@@ -36,6 +36,7 @@ class TikTokApp extends StatelessWidget {
       // system은 앱이 실행되는 기기의 환경에 맞추는것이다.
       themeMode: ThemeMode.system,
       theme: ThemeData(
+        useMaterial3: true,
         brightness: Brightness.light,
         // 실제 앱을 만들때는 먼저 textTheme을 준비하고 모든것에 크기를 설정해주는게 생산적이다.
         // https://m2.material.io/design/typography/the-type-system.html
@@ -80,6 +81,7 @@ class TikTokApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           foregroundColor: Colors.black,
           backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
           elevation: 0,
           titleTextStyle: TextStyle(
             color: Colors.black,
@@ -99,8 +101,11 @@ class TikTokApp extends StatelessWidget {
       // dark모드와 light 모드를 한번에 같이 만드는게 light 모드를 먼저 완성한 다음 dark 모드를 적용하는 것보다 쉽다.
       // flutter에서는 light 모드에서 dark 모드로 바꾸는 것이 쉽다.
       darkTheme: ThemeData(
-        tabBarTheme: const TabBarTheme(
+        useMaterial3: true,
+        tabBarTheme: TabBarTheme(
           indicatorColor: Colors.white,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.grey.shade700,
         ),
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: Color(0xffe9435a),
@@ -109,14 +114,26 @@ class TikTokApp extends StatelessWidget {
         textTheme: Typography.whiteMountainView,
         scaffoldBackgroundColor: Colors.black,
         appBarTheme: AppBarTheme(
+          surfaceTintColor: Colors.grey.shade900,
           backgroundColor: Colors.grey.shade900,
+          titleTextStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: Sizes.size16 + Sizes.size2,
+            fontWeight: FontWeight.w600,
+          ),
+          actionsIconTheme: IconThemeData(
+            color: Colors.grey.shade100,
+          ),
+          iconTheme: IconThemeData(
+            color: Colors.grey.shade100,
+          ),
         ),
         bottomAppBarTheme: BottomAppBarTheme(
           color: Colors.grey.shade900,
         ),
         primaryColor: const Color(0xffe9435a),
       ),
-      home: const LoginScreen(),
+      home: const SignUpScreen(),
     );
   }
 }
