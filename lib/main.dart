@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktok/features/authentication/sign_up_screen.dart';
+import 'package:flutter_gen/gen_l10n/intl_generated.dart';
 
 import 'constants/sizes.dart';
 
@@ -34,6 +35,9 @@ class TikTokApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'TikTok',
       localizationsDelegates: const [
+        // 내가 만든 위젯들을 위한 번역
+        AppLocalizations.delegate,
+        // Flutter 기본 위젯들을 위한 번역
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
