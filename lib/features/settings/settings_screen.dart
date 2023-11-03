@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -21,85 +22,126 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-      ),
-      body: ListView(
-        children: [
-          SwitchListTile.adaptive(
-            value: _notification,
-            onChanged: _onNotificationsChanged,
-            title: const Text('Enable Notifications'),
-            subtitle: const Text('its a subtitle'),
-          ),
-          CheckboxListTile(
-            activeColor: Colors.black,
-            value: _notification,
-            onChanged: _onNotificationsChanged,
-            title: const Text('Enable Notifications'),
-          ),
-          ListTile(
-            onTap: () async {},
-            title: const Text(
-              "What is your birthday?",
+    return Localizations.override(
+      context: context,
+      locale: const Locale('en'),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Settings'),
+        ),
+        body: ListView(
+          children: [
+            SwitchListTile.adaptive(
+              value: _notification,
+              onChanged: _onNotificationsChanged,
+              title: const Text('Enable Notifications'),
+              subtitle: const Text('its a subtitle'),
             ),
-          ),
-          ListTile(
-            title: const Text(
-              "Log out(iOS)",
+            CheckboxListTile(
+              activeColor: Colors.black,
+              value: _notification,
+              onChanged: _onNotificationsChanged,
+              title: const Text('Enable Notifications'),
             ),
-            textColor: Colors.red,
-            onTap: () {
-              showCupertinoModalPopup(
-                context: context,
-                builder: (context) => CupertinoAlertDialog(
-                  title: const Text('Are you sure?'),
-                  content: const Text('Do you want to log out?'),
-                  actions: [
-                    CupertinoDialogAction(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('No'),
-                    ),
-                    CupertinoDialogAction(
-                      isDestructiveAction: true,
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('Yes'),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text(
-              "Log out(iOS / Bottom)",
+            ListTile(
+              onTap: () async {
+                final date = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(1980),
+                  lastDate: DateTime(2030),
+                );
+                if (kDebugMode) {
+                  print(date);
+                }
+                if (!mounted) return;
+                final time = await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+                );
+                if (kDebugMode) {
+                  print(time);
+                }
+                if (!mounted) return;
+                final booking = await showDateRangePicker(
+                  context: context,
+                  firstDate: DateTime(1980),
+                  lastDate: DateTime(2030),
+                  builder: (context, child) {
+                    return Theme(
+                      data: ThemeData(
+                          appBarTheme: const AppBarTheme(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.black)),
+                      child: child!,
+                    );
+                  },
+                );
+                if (kDebugMode) {
+                  print(booking);
+                }
+              },
+              title: const Text(
+                "What is your birthday?",
+              ),
+              subtitle: const Text("I need to know!"),
             ),
-            textColor: Colors.blue,
-            onTap: () {
-              showCupertinoModalPopup(
-                context: context,
-                builder: (context) => CupertinoActionSheet(
-                  title: const Text('Are you sure?'),
-                  message: const Text('Do you want to log out?'),
-                  actions: [
-                    CupertinoActionSheetAction(
-                      isDefaultAction: true,
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('No'),
-                    ),
-                    CupertinoActionSheetAction(
-                      isDestructiveAction: true,
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('Yes'),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-          const AboutListTile(),
-        ],
+            ListTile(
+              title: const Text(
+                "Log out(iOS)",
+              ),
+              textColor: Colors.red,
+              onTap: () {
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (context) => CupertinoAlertDialog(
+                    title: const Text('Are you sure?'),
+                    content: const Text('Do you want to log out?'),
+                    actions: [
+                      CupertinoDialogAction(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: const Text('No'),
+                      ),
+                      CupertinoDialogAction(
+                        isDestructiveAction: true,
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: const Text('Yes'),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text(
+                "Log out(iOS / Bottom)",
+              ),
+              textColor: Colors.blue,
+              onTap: () {
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (context) => CupertinoActionSheet(
+                    title: const Text('Are you sure?'),
+                    message: const Text('Do you want to log out?'),
+                    actions: [
+                      CupertinoActionSheetAction(
+                        isDefaultAction: true,
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: const Text('No'),
+                      ),
+                      CupertinoActionSheetAction(
+                        isDestructiveAction: true,
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: const Text('Yes'),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            const AboutListTile(),
+          ],
+        ),
       ),
     );
   }

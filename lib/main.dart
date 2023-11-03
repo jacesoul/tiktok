@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktok/features/authentication/sign_up_screen.dart';
 
@@ -32,6 +33,16 @@ class TikTokApp extends StatelessWidget {
       // 화면에 나오는 디버그 배너를 없애준다.
       debugShowCheckedModeBanner: false,
       title: 'TikTok',
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('ko'),
+        Locale('en'),
+        Locale('es'),
+      ],
       // themeMode는 휴대폰한테 어떤 theme을 사용할지 알려주는 기능을 한다.
       // system은 앱이 실행되는 기기의 환경에 맞추는것이다.
       themeMode: ThemeMode.system,
