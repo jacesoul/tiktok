@@ -46,6 +46,8 @@ class TikTokApp extends StatelessWidget {
         Locale('ko'),
         Locale('en'),
         Locale('es'),
+        Locale("jp"),
+        Locale("ch"),
       ],
       // themeMode는 휴대폰한테 어떤 theme을 사용할지 알려주는 기능을 한다.
       // system은 앱이 실행되는 기기의 환경에 맞추는것이다.
