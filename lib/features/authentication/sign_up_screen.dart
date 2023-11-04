@@ -7,6 +7,7 @@ import 'package:tiktok/features/authentication/username_screen.dart';
 import 'package:tiktok/features/authentication/login_screen.dart';
 import 'package:tiktok/features/authentication/widgets/auth_button.dart';
 import 'package:tiktok/utils.dart';
+import 'package:flutter_gen/gen_l10n/intl_generated.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -51,7 +52,7 @@ class SignUpScreen extends StatelessWidget {
                   // copyWith은 style은 그대로 사용하고 거기에 다른 요소를 추가할수 있다.
                   // headlineSmall이 정의되어 있다는걸 dart에 알려주기 위해 ! 를 추가해줘야한다.
                   Text(
-                    "Sign up for TikTok",
+                    AppLocalizations.of(context)!.signUpTitle("TikTok"),
                     style: GoogleFonts.mulish(
                       textStyle:
                           Theme.of(context).textTheme.headlineSmall!.copyWith(
