@@ -30,6 +30,9 @@ class TikTokApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    S.load(
+      const Locale('en'),
+    );
     return MaterialApp(
       // 화면에 나오는 디버그 배너를 없애준다.
       debugShowCheckedModeBanner: false,
