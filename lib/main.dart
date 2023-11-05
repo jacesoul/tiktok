@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tiktok/features/authentication/sign_up_screen.dart';
 import "package:flutter_localizations/flutter_localizations.dart";
+import 'package:tiktok/features/authentication/sign_up_screen.dart';
 import 'package:tiktok/generated/l10n.dart';
 
 import 'constants/sizes.dart';

@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marquee/marquee.dart';
 import 'package:tiktok/features/videos/widgets/video_button.dart';
 import 'package:tiktok/features/videos/widgets/video_comments.dart';
+import 'package:tiktok/generated/l10n.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -309,16 +310,16 @@ class _VideoPostState extends State<VideoPost>
                   child: Text("JACE"),
                 ),
                 Gaps.v20,
-                const VideoButton(
+                VideoButton(
                   icon: FontAwesomeIcons.solidHeart,
-                  text: "2.9M",
+                  text: S.of(context).likeCount(123124123),
                 ),
                 Gaps.v20,
                 GestureDetector(
                   onTap: () => _onCommentsTap(context),
-                  child: const VideoButton(
+                  child: VideoButton(
                     icon: FontAwesomeIcons.solidComment,
-                    text: "33K",
+                    text: S.of(context).commentCount(6596845983453),
                   ),
                 ),
                 Gaps.v20,
