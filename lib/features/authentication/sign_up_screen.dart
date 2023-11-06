@@ -3,8 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktok/constants/gaps.dart';
 import 'package:tiktok/constants/sizes.dart';
-import 'package:tiktok/features/authentication/username_screen.dart';
 import 'package:tiktok/features/authentication/login_screen.dart';
+import 'package:tiktok/features/authentication/username_screen.dart';
 import 'package:tiktok/features/authentication/widgets/auth_button.dart';
 import 'package:tiktok/generated/l10n.dart';
 import 'package:tiktok/utils.dart';
@@ -12,13 +12,35 @@ import 'package:tiktok/utils.dart';
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
+  // PageRouteBuilder는 page route에 animation, duration등을 설정할 수 있게 해주는 위젯이다.
   void _onLoginTap(BuildContext context) async {
     await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const LoginScreen(),
+      PageRouteBuilder(
+        transitionDuration: const Duration(milliseconds: 1000),
+        reverseTransitionDuration: const Duration(milliseconds: 1000),
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            const LoginScreen(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          final offsetAnimation = Tween<Offset>(
+            // Offset의 앞이 x축(가로방향)이고 뒤가 y축(세로방향)이다.
+            // -1은 100퍼센트 위로, 1은 100퍼센트 아래로, 0은 현재위치
+            begin: const Offset(0, -1),
+            end: Offset.zero,
+          ).animate(animation);
+          final opacityAnimation = Tween<double>(
+            begin: 0.5,
+            end: 1.0,
+          ).animate(animation);
+          return SlideTransition(
+            position: offsetAnimation,
+            child: FadeTransition(
+              opacity: opacityAnimation,
+              child: child,
+            ),
+          );
+        },
       ),
     );
-    print("user came back!");
   }
 
   void _onEmailTap(BuildContext context) {
