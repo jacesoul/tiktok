@@ -52,8 +52,7 @@ class S {
 
   /// `Sign up for {nameOfApp} {when}`
   String signUpTitle(String nameOfApp, DateTime when) {
-    final DateFormat whenDateFormat =
-        DateFormat('yQQQQ / LLLL : Hm 💈🫡', Intl.getCurrentLocale());
+    final DateFormat whenDateFormat = DateFormat.MMMEd(Intl.getCurrentLocale());
     final String whenString = whenDateFormat.format(when);
 
     return Intl.message(
@@ -132,7 +131,7 @@ class S {
     final String valueString = valueNumberFormat.format(value);
 
     return Intl.message(
-      '$valueString',
+      valueString,
       name: 'likeCount',
       desc: 'The number of likes on a video.',
       args: [valueString],
@@ -147,7 +146,7 @@ class S {
     final String valueString = valueNumberFormat.format(value);
 
     return Intl.message(
-      '$valueString',
+      valueString,
       name: 'commentCount',
       desc: 'The number of comments on a video.',
       args: [valueString],

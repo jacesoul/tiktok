@@ -9,7 +9,7 @@
       },
       "when": {
         "type": "DateTime",
-        "format": "yQQQQ / LLLL : Hm 💈🫡",
+        "format": "MMMEd",
         "isCustomDateFormat": "true"
       }
     }
