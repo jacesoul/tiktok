@@ -52,7 +52,10 @@ class SignUpScreen extends StatelessWidget {
                   // copyWith은 style은 그대로 사용하고 거기에 다른 요소를 추가할수 있다.
                   // headlineSmall이 정의되어 있다는걸 dart에 알려주기 위해 ! 를 추가해줘야한다.
                   Text(
-                    S.of(context).signUpTitle("TikTok"),
+                    S.of(context).signUpTitle(
+                          "TikTok",
+                          DateTime.now(),
+                        ),
                     style: GoogleFonts.mulish(
                       textStyle:
                           Theme.of(context).textTheme.headlineSmall!.copyWith(
