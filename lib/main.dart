@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import "package:flutter_localizations/flutter_localizations.dart";
+import 'package:tiktok/features/authentication/login_form_screen.dart';
+import 'package:tiktok/features/authentication/login_screen.dart';
 import 'package:tiktok/features/authentication/sign_up_screen.dart';
+import 'package:tiktok/features/authentication/username_screen.dart';
 import 'package:tiktok/generated/l10n.dart';
 
 import 'constants/sizes.dart';
@@ -148,7 +151,13 @@ class TikTokApp extends StatelessWidget {
         ),
         primaryColor: const Color(0xffe9435a),
       ),
-      home: const SignUpScreen(),
+      initialRoute: SignUpScreen.routeName,
+      routes: {
+        SignUpScreen.routeName: (context) => const SignUpScreen(),
+        UsernameScreen.routeName: (context) => const UsernameScreen(),
+        LoginScreen.routeName: (context) => const LoginScreen(),
+        LoginFormScreen.routeName: (context) => const LoginFormScreen(),
+      },
     );
   }
 }

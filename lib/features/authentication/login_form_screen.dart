@@ -5,6 +5,7 @@ import '../onboarding/interests_screen.dart';
 import 'widgets/form_button.dart';
 
 class LoginFormScreen extends StatefulWidget {
+  static String routeName = "/login_form";
   const LoginFormScreen({super.key});
 
   @override
