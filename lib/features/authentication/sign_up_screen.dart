@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktok/constants/gaps.dart';
 import 'package:tiktok/constants/sizes.dart';
@@ -15,7 +16,11 @@ class SignUpScreen extends StatelessWidget {
 
   // PageRouteBuilder는 page route에 animation, duration등을 설정할 수 있게 해주는 위젯이다.
   void _onLoginTap(BuildContext context) async {
-    Navigator.of(context).pushNamed(LoginScreen.routeName);
+    // context.go는 route stack에 관계없이 별도의 위치로 이동시킨다.
+    // context.go는 back버튼을 원하지 않을때 유용하다.
+    // context.go(LoginScreen.routeName);
+    context.push(LoginScreen.routeName);
+    // Navigator.of(context).pushNamed(LoginScreen.routeName);
 
     /* await Navigator.of(context).push(
       PageRouteBuilder(
@@ -47,7 +52,8 @@ class SignUpScreen extends StatelessWidget {
   }
 
   void _onEmailTap(BuildContext context) {
-    Navigator.of(context).pushNamed(UsernameScreen.routeName);
+    context.push(UsernameScreen.routeName);
+    // Navigator.of(context).pushNamed(UsernameScreen.routeName);
   }
 
   @override
