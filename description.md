@@ -38,3 +38,8 @@
 ### ONBOARDING
 
 - onboarding은 유저가 가장 처음 앱을 실행했을때 유저를 맞이하고 앱에 관해 설명해주는 방식을 말한다.
+
+### NAVIGATOR 2
+
+- MaterialPageRoute를 사용하면 url이 변하지 않는다.
+- Navigator 1.0은 웹에서 앞으로 가기 버튼을 지원하지 않는다.
