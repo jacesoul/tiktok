@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktok/constants/gaps.dart';
 import 'package:tiktok/constants/sizes.dart';
 import 'package:tiktok/features/authentication/email_screen.dart';
@@ -38,13 +39,17 @@ class _UsernameScreenState extends State<UsernameScreen> {
   void _onNextTap() {
     if (_username.isEmpty) return;
 
-    Navigator.pushNamed(
+    context.push(
+      EmailScreen.routeName,
+      extra: EmailScreenArgs(username: _username),
+    );
+    /* Navigator.pushNamed(
       context,
       EmailScreen.routeName,
       arguments: EmailScreenArgs(
         username: _username,
       ),
-    );
+    ); */
     /* Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const EmailScreen(),
