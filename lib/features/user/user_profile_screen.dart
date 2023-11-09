@@ -6,7 +6,12 @@ import 'package:tiktok/features/settings/settings_screen.dart';
 import 'package:tiktok/features/user/widgets/persistent_tab_bar.dart';
 
 class UserProfileScreen extends StatefulWidget {
-  const UserProfileScreen({super.key});
+  final String username;
+
+  const UserProfileScreen({
+    super.key,
+    required this.username,
+  });
 
   @override
   State<UserProfileScreen> createState() => _UserProfileScreenState();
@@ -38,7 +43,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             headerSliverBuilder: (context, innerBoxIsScrolled) {
               return [
                 SliverAppBar(
-                  title: const Text("jace"),
+                  title: Text(widget.username),
                   actions: [
                     IconButton(
                         onPressed: _onGearPressed,
@@ -52,28 +57,28 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   child: Column(
                     children: [
                       Gaps.v20,
-                      const CircleAvatar(
+                      CircleAvatar(
                         radius: 50,
-                        foregroundImage: NetworkImage(
+                        foregroundImage: const NetworkImage(
                           "https://images.unsplash.com/photo-1695843126800-b42849a648d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2860&q=80",
                         ),
                         child: Text(
-                          "jace",
+                          widget.username,
                         ),
                       ),
                       Gaps.v20,
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "@jace",
-                            style: TextStyle(
+                            "@${widget.username}",
+                            style: const TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: Sizes.size16,
                             ),
                           ),
                           Gaps.h5,
-                          FaIcon(
+                          const FaIcon(
                             FontAwesomeIcons.solidCircleCheck,
                             size: Sizes.size16,
                             color: Colors.blue,
