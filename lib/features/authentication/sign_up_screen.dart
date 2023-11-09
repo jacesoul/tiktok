@@ -11,7 +11,8 @@ import 'package:tiktok/generated/l10n.dart';
 import 'package:tiktok/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
-  static String routeName = "/";
+  static String routeURL = "/";
+  static String routeName = "signup";
   const SignUpScreen({super.key});
 
   // PageRouteBuilder는 page route에 animation, duration등을 설정할 수 있게 해주는 위젯이다.
@@ -52,7 +53,8 @@ class SignUpScreen extends StatelessWidget {
   }
 
   void _onEmailTap(BuildContext context) {
-    context.push(UsernameScreen.routeName);
+    context.pushNamed(UsernameScreen.routeName);
+    // context.push(UsernameScreen.routeName);
     // context.push("/users/jace?show=likes");
     // Navigator.of(context).pushNamed(UsernameScreen.routeName);
   }
