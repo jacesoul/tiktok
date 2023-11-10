@@ -85,7 +85,6 @@ class SignUpScreen extends StatelessWidget {
                   Text(
                     S.of(context).signUpTitle(
                           "TikTok",
-                          DateTime.now(),
                         ),
                     style: GoogleFonts.mulish(
                       textStyle:
