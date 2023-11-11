@@ -5,40 +5,57 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Android Phone",
+      "name": "Current Device",
       "request": "launch",
-      "type": "dart",
-      "deviceId": "Device Name"
+      "type": "dart"
     },
     {
-      "name": "Android Tablet",
+      "name": "Current Device (profile mode)",
       "request": "launch",
       "type": "dart",
-      "deviceId": "Device Name"
+      "flutterMode": "profile"
     },
     {
-      "name": "Apple iPad",
+      "name": "Current Device (release mode)",
       "request": "launch",
       "type": "dart",
-      "deviceId": "Device Name"
+      "flutterMode": "release"
     },
     {
-      "name": "Apple iPhone",
+      "name": "Android 9 (API 28) (Pixel 2)",
       "request": "launch",
       "type": "dart",
-      "deviceId": "iPhone 14 Pro Max"
+      "args": ["-d", "emulator-5554"]
     },
     {
-      "name": "iPhone 15 Pro Max",
+      "name": "Android 12 (API 31) (Pixel 4)",
       "request": "launch",
       "type": "dart",
-      "deviceId": "iPhone 15 Pro Max"
+      "args": ["-d", "emulator-5556"]
+    },
+    {
+      "name": "Windows",
+      "request": "launch",
+      "type": "dart",
+      "args": ["-d", "windows"]
     },
     {
       "name": "Web",
       "request": "launch",
       "type": "dart",
-      "deviceId": "chrome"
+      "args": ["-d", "chrome"]
+    },
+    {
+      "name": "Android Device",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "android"
+    },
+    {
+      "name": "iPhone Device",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "iphone"
     }
   ]
 }
