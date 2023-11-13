@@ -1,5 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:tiktok/constants/gaps.dart';
 import 'package:tiktok/constants/sizes.dart';
@@ -105,10 +107,15 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
 
     final video = await _cameraController.stopVideoRecording();
 
+    if (!mounted) return;
+
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => VideoPreviewScreen(video: video),
+        builder: (context) => VideoPreviewScreen(
+          video: video,
+          isPicked: false,
+        ),
       ),
     );
   }
@@ -133,6 +140,24 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
         _stopRecording();
       }
     });
+  }
+
+  Future<void> _onPickVideoPressed() async {
+    final video = await ImagePicker().pickVideo(source: ImageSource.gallery);
+
+    if (video == null) return;
+
+    if (!mounted) return;
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => VideoPreviewScreen(
+          video: video,
+          isPicked: true,
+        ),
+      ),
+    );
   }
 
   @override
@@ -167,39 +192,39 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
                     child: Column(
                       children: [
                         IconButton(
-                          color: Colors.white,
+                          color: Colors.grey.shade500,
                           onPressed: _toggleSelfieMode,
                           icon: const Icon(Icons.cameraswitch),
                         ),
                         Gaps.v10,
                         IconButton(
                           color: _flashMode == FlashMode.off
-                              ? Colors.amber.shade200
-                              : Colors.white,
+                              ? Colors.blue.shade300
+                              : Colors.grey.shade500,
                           onPressed: () => _setFlashMode(FlashMode.off),
                           icon: const Icon(Icons.flash_off_rounded),
                         ),
                         Gaps.v10,
                         IconButton(
                           color: _flashMode == FlashMode.always
-                              ? Colors.amber.shade200
-                              : Colors.white,
+                              ? Colors.blue.shade300
+                              : Colors.grey.shade500,
                           onPressed: () => _setFlashMode(FlashMode.always),
                           icon: const Icon(Icons.flash_on_rounded),
                         ),
                         Gaps.v10,
                         IconButton(
                           color: _flashMode == FlashMode.auto
-                              ? Colors.amber.shade200
-                              : Colors.white,
+                              ? Colors.blue.shade300
+                              : Colors.grey.shade500,
                           onPressed: () => _setFlashMode(FlashMode.auto),
                           icon: const Icon(Icons.flash_auto_rounded),
                         ),
                         Gaps.v10,
                         IconButton(
                           color: _flashMode == FlashMode.torch
-                              ? Colors.amber.shade200
-                              : Colors.white,
+                              ? Colors.blue.shade300
+                              : Colors.grey.shade500,
                           onPressed: () => _setFlashMode(FlashMode.torch),
                           icon: const Icon(Icons.flashlight_on_rounded),
                         ),
@@ -208,34 +233,53 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
                   ),
                   Positioned(
                     bottom: Sizes.size40,
-                    child: GestureDetector(
-                      onTapUp: (details) => _stopRecording(),
-                      onTapDown: (details) => _startRecording(),
-                      child: ScaleTransition(
-                        scale: _bottonAnimation,
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            SizedBox(
-                              width: Sizes.size60 + Sizes.size14,
-                              height: Sizes.size60 + Sizes.size14,
-                              child: CircularProgressIndicator(
-                                color: Colors.red.shade400,
-                                strokeWidth: Sizes.size6,
-                                value: _progressAnimationController.value,
-                              ),
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      children: [
+                        // Spacer는 변형 가능한 공간을 만들어준다.
+                        const Spacer(),
+                        GestureDetector(
+                          onTapUp: (details) => _stopRecording(),
+                          onTapDown: (details) => _startRecording(),
+                          child: ScaleTransition(
+                            scale: _bottonAnimation,
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                SizedBox(
+                                  width: Sizes.size60 + Sizes.size14,
+                                  height: Sizes.size60 + Sizes.size14,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.red.shade400,
+                                    strokeWidth: Sizes.size6,
+                                    value: _progressAnimationController.value,
+                                  ),
+                                ),
+                                Container(
+                                  width: Sizes.size60,
+                                  height: Sizes.size60,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.red.shade400,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Container(
-                              width: Sizes.size60,
-                              height: Sizes.size60,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.red.shade400,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: IconButton(
+                              onPressed: _onPickVideoPressed,
+                              icon: const FaIcon(
+                                FontAwesomeIcons.image,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ],
