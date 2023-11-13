@@ -26,7 +26,7 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
   late final AnimationController _progressAnimationController =
       AnimationController(
     vsync: this,
-    duration: const Duration(seconds: 3),
+    duration: const Duration(seconds: 1),
     lowerBound: 0.0,
     upperBound: 1.0,
   );
