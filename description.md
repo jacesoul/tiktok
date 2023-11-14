@@ -43,3 +43,4 @@
 
 - MaterialPageRoute를 사용하면 url이 변하지 않는다.
 - Navigator 1.0은 웹에서 앞으로 가기 버튼을 지원하지 않는다.
+- URL을 바꾸고 싶을 땐 GoRouter를 사용하고 바꾸고 싶지 않을땐 사용하지 않는다.

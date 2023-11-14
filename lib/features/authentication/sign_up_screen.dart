@@ -11,52 +11,22 @@ import 'package:tiktok/generated/l10n.dart';
 import 'package:tiktok/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
-  static String routeURL = "/";
   static String routeName = "signup";
+  static String routeURL = "/";
   const SignUpScreen({super.key});
 
   // PageRouteBuilder는 page route에 animation, duration등을 설정할 수 있게 해주는 위젯이다.
   void _onLoginTap(BuildContext context) async {
-    // context.go는 route stack에 관계없이 별도의 위치로 이동시킨다.
-    // context.go는 back버튼을 원하지 않을때 유용하다.
-    // context.go(LoginScreen.routeName);
-    context.push(LoginScreen.routeName);
-    // Navigator.of(context).pushNamed(LoginScreen.routeName);
-
-    /* await Navigator.of(context).push(
-      PageRouteBuilder(
-        transitionDuration: const Duration(milliseconds: 1000),
-        reverseTransitionDuration: const Duration(milliseconds: 1000),
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            const LoginScreen(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          final offsetAnimation = Tween<Offset>(
-            // Offset의 앞이 x축(가로방향)이고 뒤가 y축(세로방향)이다.
-            // -1은 100퍼센트 위로, 1은 100퍼센트 아래로, 0은 현재위치
-            begin: const Offset(0, -1),
-            end: Offset.zero,
-          ).animate(animation);
-          final opacityAnimation = Tween<double>(
-            begin: 0.5,
-            end: 1.0,
-          ).animate(animation);
-          return SlideTransition(
-            position: offsetAnimation,
-            child: FadeTransition(
-              opacity: opacityAnimation,
-              child: child,
-            ),
-          );
-        },
-      ),
-    ); */
+    context.pushNamed(LoginScreen.routeName);
   }
 
   void _onEmailTap(BuildContext context) {
-    context.pushNamed(UsernameScreen.routeName);
-    // context.push(UsernameScreen.routeName);
-    // context.push("/users/jace?show=likes");
-    // Navigator.of(context).pushNamed(UsernameScreen.routeName);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const UsernameScreen(),
+      ),
+    );
   }
 
   @override

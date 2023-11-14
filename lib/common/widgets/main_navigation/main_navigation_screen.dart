@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tiktok/features/main_navigation/widgets/nav_tab.dart';
-import 'package:tiktok/features/main_navigation/widgets/post_video_button.dart';
+import 'package:tiktok/common/widgets/main_navigation/widgets/nav_tab.dart';
+import 'package:tiktok/common/widgets/main_navigation/widgets/post_video_button.dart';
 import 'package:tiktok/features/user/user_profile_screen.dart';
 import 'package:tiktok/features/videos/video_timeline_screen.dart';
 import 'package:tiktok/utils.dart';
 
-import '../../constants/gaps.dart';
-import '../../constants/sizes.dart';
-import '../discover/discover_screen.dart';
-import '../inbox/inbox_screen.dart';
+import '../../../constants/gaps.dart';
+import '../../../constants/sizes.dart';
+import '../../../features/discover/discover_screen.dart';
+import '../../../features/inbox/inbox_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
