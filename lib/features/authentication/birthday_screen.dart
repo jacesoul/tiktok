@@ -32,8 +32,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   }
 
   void _onNextTap() {
-    // pushReplacementNamed는 push는 되지만 뒤로 갈 수가 없다.
-    context.pushReplacementNamed(InterestsScreen.routeName);
+    context.goNamed(InterestsScreen.routeName);
   }
 
   void _setTextFieldDate(DateTime date) {
