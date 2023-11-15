@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktok/features/inbox/chat_screen.dart';
 
 import '../../constants/sizes.dart';
@@ -9,21 +10,11 @@ class InboxScreen extends StatelessWidget {
   const InboxScreen({super.key});
 
   void _onDmPressed(BuildContext context) {
-    // StatefullWidget으로 변경하면 context를 사용할필요가 없지만
-    // const로 사용할수 있고 전반적으로 코드양이 적은 statelessWidget이 더 좋다.
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const ChatScreen(),
-      ),
-    );
+    context.pushNamed(ChatScreen.routeName);
   }
 
   void _onActivityTap(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const ActivityScreen(),
-      ),
-    );
+    context.pushNamed(ActivityScreen.routeName);
   }
 
   @override
