@@ -49,3 +49,9 @@
 - go를 한다면 말그대로 그냥 그 경로로 간다는 뜻이다. 경로가 바뀌어버리고, 기존 스택에 추가하는게 아니다. 스택을 교체하는 것이다. context.go를 사용하는 이유는 그냥 그 경로로 가고 싶기 때문이다. 기존 스택은 신경쓰지 않고 새로운 URL로 이동
 - 자식 경로는 /로 시작할 수 없다
 - routeName과 routeURL이 다를 수 있기 때문에 을 따로 두면 좋다.
+
+### STATE MANAGEMENT
+
+- InheritedWidget에서는 위젯 트리 맨 위에 정의된 값을 가져다 쓸수 있다.
+- updateShouldNotify는 위젯을 rebuild 할지 말지를 정할수 있게 해준다.
+- videoConfig라는 타입의 InheritedWidget을 가져오라고 context에 명령할수 있다.
