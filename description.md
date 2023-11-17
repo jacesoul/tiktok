@@ -57,3 +57,4 @@
 - videoConfig라는 타입의 InheritedWidget을 가져오라고 context에 명령할수 있다.
 - 다른 모든 화면과 위젯에게 데이터와 데이터 변경 메소드 접근권한을 주기 위해서 InheritedWidget를 쓰는 것이다.
 - InheritedWidget는 단지 데이터 전달자일뿐이다.
+- changeNotifier는 두 기능을 감싸서 하나로 만드는 것이다.
