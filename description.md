@@ -55,3 +55,5 @@
 - InheritedWidget에서는 위젯 트리 맨 위에 정의된 값을 가져다 쓸수 있다.
 - updateShouldNotify는 위젯을 rebuild 할지 말지를 정할수 있게 해준다.
 - videoConfig라는 타입의 InheritedWidget을 가져오라고 context에 명령할수 있다.
+- 다른 모든 화면과 위젯에게 데이터와 데이터 변경 메소드 접근권한을 주기 위해서 InheritedWidget를 쓰는 것이다.
+- InheritedWidget는 단지 데이터 전달자일뿐이다.
