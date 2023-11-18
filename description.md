@@ -58,3 +58,4 @@
 - 다른 모든 화면과 위젯에게 데이터와 데이터 변경 메소드 접근권한을 주기 위해서 InheritedWidget를 쓰는 것이다.
 - InheritedWidget는 단지 데이터 전달자일뿐이다.
 - changeNotifier는 두 기능을 감싸서 하나로 만드는 것이다.
+- provider는 앱에 많은 것을 제공하고 어디서나 열람할수 있게 해준다
