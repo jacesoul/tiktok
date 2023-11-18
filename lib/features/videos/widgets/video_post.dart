@@ -48,7 +48,7 @@ class _VideoPostState extends State<VideoPost>
 
   bool _isPaused = false;
   bool _isMoreTagsShowed = false;
-  bool _autoMute = videoConfig.autoMuted;
+  bool _autoMute = videoConfig.value;
 
   final Iterable<String> _tags = keywords.map((tag) => "#$tag");
 
@@ -104,7 +104,7 @@ class _VideoPostState extends State<VideoPost>
 
     videoConfig.addListener(() {
       setState(() {
-        _autoMute = videoConfig.autoMuted;
+        _autoMute = videoConfig.value;
       });
     });
   }
@@ -212,7 +212,9 @@ class _VideoPostState extends State<VideoPost>
                     : FontAwesomeIcons.volumeHigh,
                 color: Colors.blue.shade600,
               ),
-              onPressed: videoConfig.toggleAutoMute,
+              onPressed: () {
+                videoConfig.value = !videoConfig.value;
+              },
             ),
           ),
           Positioned(
