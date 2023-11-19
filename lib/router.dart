@@ -7,7 +7,7 @@ import 'package:tiktok/features/inbox/activity_screen.dart';
 import 'package:tiktok/features/inbox/chat_detail_screen.dart';
 import 'package:tiktok/features/inbox/chat_screen.dart';
 import 'package:tiktok/features/onboarding/interests_screen.dart';
-import 'package:tiktok/features/videos/video_recording_screen.dart';
+import 'package:tiktok/features/videos/views/video_recording_screen.dart';
 
 final router = GoRouter(
   initialLocation: "/inbox",
