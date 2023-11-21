@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tiktok/common/widgets/main_navigation/widgets/video_configuration/video_config.dart';
+import 'package:tiktok/features/videos/view_models/playback_config_vm.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -34,10 +34,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
         body: ListView(
           children: [
             SwitchListTile.adaptive(
-              value: context.watch<VideoConfig>().isMuted,
-              onChanged: (value) => context.read<VideoConfig>().toggleIsMuted(),
-              title: const Text('Auto Mute'),
+              value: context.watch<PlayBackConfigViewModel>().muted,
+              onChanged: (value) =>
+                  context.read<PlayBackConfigViewModel>().setMuted(value),
+              title: const Text('Mute Video'),
               subtitle: const Text('Video will be muted by default'),
+            ),
+            SwitchListTile.adaptive(
+              value: context.watch<PlayBackConfigViewModel>().autoplay,
+              onChanged: (value) =>
+                  context.read<PlayBackConfigViewModel>().setAutoplay(value),
+              title: const Text('Autoplay'),
+              subtitle: const Text('Video will be autoplayed by default'),
             ),
             SwitchListTile.adaptive(
               value: _notification,
