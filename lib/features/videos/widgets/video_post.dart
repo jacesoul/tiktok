@@ -1,7 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marquee/marquee.dart';
+import 'package:tiktok/features/videos/view_models/playback_config_vm.dart';
 import 'package:tiktok/features/videos/widgets/video_button.dart';
 import 'package:tiktok/features/videos/widgets/video_comments.dart';
 import 'package:tiktok/generated/l10n.dart';
@@ -23,7 +25,7 @@ const keywords = [
   "tag9",
 ];
 
-class VideoPost extends StatefulWidget {
+class VideoPost extends ConsumerStatefulWidget {
   final Function onVideoFinished;
   final int index;
 
@@ -34,10 +36,10 @@ class VideoPost extends StatefulWidget {
   });
 
   @override
-  State<VideoPost> createState() => _VideoPostState();
+  VideoPostState createState() => VideoPostState();
 }
 
-class _VideoPostState extends State<VideoPost>
+class VideoPostState extends ConsumerState<VideoPost>
     with SingleTickerProviderStateMixin {
   late final VideoPlayerController _videoPlayController;
 
@@ -109,7 +111,8 @@ class _VideoPostState extends State<VideoPost>
 
   void _onPlaybackConfigChanged() {
     if (!mounted) return;
-    if (false) {
+
+    if (ref.watch(playbackConfigProvider).muted) {
       _videoPlayController.setVolume(0);
     } else {
       _videoPlayController.setVolume(1);
@@ -124,7 +127,9 @@ class _VideoPostState extends State<VideoPost>
     if (info.visibleFraction == 1 &&
         !_isPaused &&
         !_videoPlayController.value.isPlaying) {
-      if (false) _videoPlayController.play();
+      if (ref.watch(playbackConfigProvider).autoplay) {
+        _videoPlayController.play();
+      }
     }
 
     if (_videoPlayController.value.isPlaying && info.visibleFraction == 0) {
@@ -208,12 +213,12 @@ class _VideoPostState extends State<VideoPost>
             top: 40,
             child: IconButton(
               icon: FaIcon(
-                false
+                ref.watch(playbackConfigProvider).muted
                     ? FontAwesomeIcons.volumeOff
                     : FontAwesomeIcons.volumeHigh,
                 color: Colors.blue.shade600,
               ),
-              onPressed: () {},
+              onPressed: _onPlaybackConfigChanged,
             ),
           ),
           Positioned(
