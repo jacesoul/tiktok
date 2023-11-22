@@ -69,3 +69,10 @@
 - MVVM 아키텍처를 사용하면 직관적으로 이해햐기 쉽게 코드를 정리할수 있다.
 - context.watch는 변하는 프로퍼티의 값을 알고 싶을때 사용한다.
 - context.read는 변하지 않는 것을 한번만 읽고 싶을때 사용한다.(에를 들어 메소드 함수)
+
+### RIVERPOD
+
+- Riverpod은 관심사의 분리를 가능케 해준다는 점에서 Provider와 비슷하다
+- Riverpod은 View로직과 Business로직을 각기 다른곳에 위치하게 만들어주고 dependency들을 주입시켜서 Provider들을 어디에서나 읽을수 있게 해준다.
+- Riverpod은 여러개의 Provider들이 동일한 type의 값을 노출할 수 있게끔 해준다.
+- Riverpod은 Provider보다 더 잘 설계된 패키지이고 로직을 극적으로 간소화시켜줄수 있다.
