@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import "package:flutter_localizations/flutter_localizations.dart";
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tiktok/features/videos/repos/playback_config_repo.dart';
 import 'package:tiktok/features/videos/view_models/playback_config_vm.dart';
@@ -29,14 +29,16 @@ void main() async {
   final preferences = await SharedPreferences.getInstance();
   final repository = PlaybackConfigRepository(preferences);
 
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(
-        create: (context) => PlayBackConfigViewModel(repository),
-      )
-    ],
-    child: const TikTokApp(),
-  ));
+  runApp(
+    ProviderScope(
+      overrides: [
+        playbackConfigProvider.overrideWith(
+          () => PlayBackConfigViewModel(repository),
+        ),
+      ],
+      child: const TikTokApp(),
+    ),
+  );
 }
 
 class TikTokApp extends StatelessWidget {
