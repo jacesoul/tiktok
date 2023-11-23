@@ -106,6 +106,8 @@ class VideoPostState extends ConsumerState<VideoPost>
   @override
   void dispose() {
     _videoPlayController.dispose();
+    _animationController.dispose();
+
     super.dispose();
   }
 
