@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,6 +7,7 @@ import "package:flutter_localizations/flutter_localizations.dart";
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tiktok/features/videos/repos/playback_config_repo.dart';
 import 'package:tiktok/features/videos/view_models/playback_config_vm.dart';
+import 'package:tiktok/firebase_options.dart';
 import 'package:tiktok/generated/l10n.dart';
 import 'package:tiktok/router.dart';
 
@@ -15,6 +17,10 @@ void main() async {
   // Flutter framework를 이용해서 앱이 시작하기 전에 state를 어떤 식으로든 바꾸고 싶다면
   // engine 자체와 engine과 widget의 연결을 확실하게 초기화 시켜야한다.
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   await SystemChrome.setPreferredOrientations(
     [

@@ -76,3 +76,25 @@
 - Riverpod은 View로직과 Business로직을 각기 다른곳에 위치하게 만들어주고 dependency들을 주입시켜서 Provider들을 어디에서나 읽을수 있게 해준다.
 - Riverpod은 여러개의 Provider들이 동일한 type의 값을 노출할 수 있게끔 해준다.
 - Riverpod은 Provider보다 더 잘 설계된 패키지이고 로직을 극적으로 간소화시켜줄수 있다.
+
+### FIREBASE
+
+- 프로토타입을 만들때 Firebase는 아주 좋다.
+- 백엔드를 만드는데 시간을 쓸 필요가 없으니까 UI만 만들면 금방 사용자를 만날수 있다.
+- Firebase의 단점은 커스텀 솔루션을 만들때이다.
+- Firebase는 작은 아이디어나 스타트업에서 사용하기 적합하다.
+- cURL 명령어를 실행
+  curl -sL https://firebase.tools | bash
+- firebase login
+- dart pub global activate flutterfire_cli
+- Warning: Pub installs executables into $HOME/.pub-cache/bin, which is not on your path. 이 에러가 나올경우
+  - open ~/.zshrc
+  - export PATH="$PATH":"$HOME/.pub-cache/bin"
+  - source ~/.zshrc
+- flutterfire configure
+- flutter pub add firebase_core
+- firebase 플러그인을 추가하거나 제거할때마다 flutterfire configure를 실행해야한다.
+  - flutterfire configure
+- ios 디버거 실행시 아래의 에러가 나온다면
+  Error (Xcode): DT_TOOLCHAIN_DIR cannot be used to evaluate LIBRARY_SEARCH_PATHS, use TOOLCHAIN_DIR instead
+  - https://stackoverflow.com/questions/77219650/dt-toolchain-dir-cannot-be-used-to-evaluate-library-search-paths-use-toolchain
