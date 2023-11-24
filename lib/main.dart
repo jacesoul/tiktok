@@ -47,16 +47,16 @@ void main() async {
   );
 }
 
-class TikTokApp extends StatelessWidget {
+class TikTokApp extends ConsumerWidget {
   const TikTokApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     S.load(
       const Locale('en'),
     );
     return MaterialApp.router(
-      routerConfig: router,
+      routerConfig: ref.watch(routerProvider),
       // 화면에 나오는 디버그 배너를 없애준다.
       debugShowCheckedModeBanner: false,
       title: 'TikTok',
