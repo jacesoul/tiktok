@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,11 +7,12 @@ import 'package:tiktok/constants/gaps.dart';
 import 'package:tiktok/constants/sizes.dart';
 import 'package:tiktok/features/authentication/login_screen.dart';
 import 'package:tiktok/features/authentication/username_screen.dart';
+import 'package:tiktok/features/authentication/view_models/social_auth_view_model.dart';
 import 'package:tiktok/features/authentication/widgets/auth_button.dart';
 import 'package:tiktok/generated/l10n.dart';
 import 'package:tiktok/utils.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends ConsumerWidget {
   static String routeName = "signup";
   static String routeURL = "/";
   const SignUpScreen({super.key});
@@ -30,7 +32,7 @@ class SignUpScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return OrientationBuilder(
       builder: (context, orientation) {
         /* if (orientation == Orientation.landscape) {
@@ -88,11 +90,15 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                     Gaps.v16,
-                    AuthButton(
-                      icon: const FaIcon(
-                        FontAwesomeIcons.apple,
-                      ),
-                      text: S.of(context).appleButton,
+                    GestureDetector(
+                      onTap: () => ref
+                          .read(socialAuthViewModelProvider.notifier)
+                          .githubSignIn(context),
+                      child: const AuthButton(
+                          icon: FaIcon(
+                            FontAwesomeIcons.github,
+                          ),
+                          text: "Continue with Github"),
                     ),
                   ],
                   if (orientation == Orientation.landscape)
