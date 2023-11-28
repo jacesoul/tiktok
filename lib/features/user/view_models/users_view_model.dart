@@ -2,15 +2,27 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tiktok/features/authentication/repos/authentication_repo.dart';
 import 'package:tiktok/features/user/models/user_profile_model.dart';
 import 'package:tiktok/features/user/repos/user_repository.dart';
 
 class UsersViewModel extends AsyncNotifier<UserProfileModel> {
-  late final UserRepository _repository;
+  late final UserRepository _usersRepository;
+  late final AuthenticationRepository _authRepository;
 
   @override
-  FutureOr<UserProfileModel> build() {
-    _repository = ref.read(userRepo);
+  FutureOr<UserProfileModel> build() async {
+    _usersRepository = ref.read(userRepo);
+    _authRepository = ref.read(authRepo);
+
+    if (_authRepository.isLoggedIn) {
+      final profile =
+          await _usersRepository.findProfile(_authRepository.user!.uid);
+      if (profile != null) {
+        return UserProfileModel.fromJson(profile);
+      }
+    }
+
     return UserProfileModel.empty();
   }
 
@@ -26,7 +38,7 @@ class UsersViewModel extends AsyncNotifier<UserProfileModel> {
       email: credential.user!.email ?? "Anonymous@anonymous.com",
       name: credential.user!.displayName ?? "Anonymous",
     );
-    await _repository.createProfile(profile);
+    await _usersRepository.createProfile(profile);
     state = AsyncValue.data(profile);
   }
 }
