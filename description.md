@@ -99,3 +99,7 @@
   Error (Xcode): DT_TOOLCHAIN_DIR cannot be used to evaluate LIBRARY_SEARCH_PATHS, use TOOLCHAIN_DIR instead
   - https://stackoverflow.com/questions/77219650/dt-toolchain-dir-cannot-be-used-to-evaluate-library-search-paths-use-toolchain
 - firestore는 nosql 데이터베이스이고 어떤 면에서는 document 데이터베이스와 비슷하다.
+
+### VIDEO UPLOAD
+
+- Cloud Functions는 구글의 백엔드에 어떤 코드도 배포할 수 있게 해주는 제품이다.
