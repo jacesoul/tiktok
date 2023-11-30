@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:tiktok/features/videos/view_models/timeline_view_model.dart';
+import 'package:tiktok/features/videos/view_models/upload_video_view_model.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPreviewScreen extends ConsumerStatefulWidget {
@@ -66,7 +67,10 @@ class VideoPreviewScreenState extends ConsumerState<VideoPreviewScreen> {
   }
 
   void _onUploadPressed() {
-    ref.read(timelineViewModelProvider.notifier).uploadVideo();
+    ref.read(uplaodVideoViewModelProvider.notifier).uploadVideo(
+          File(widget.video.path),
+          context,
+        );
   }
 
   @override
@@ -86,10 +90,10 @@ class VideoPreviewScreenState extends ConsumerState<VideoPreviewScreen> {
               ),
             ),
           IconButton(
-            onPressed: ref.watch(timelineViewModelProvider).isLoading
+            onPressed: ref.watch(uplaodVideoViewModelProvider).isLoading
                 ? () {}
                 : _onUploadPressed,
-            icon: ref.watch(timelineViewModelProvider).isLoading
+            icon: ref.watch(uplaodVideoViewModelProvider).isLoading
                 ? const CircularProgressIndicator()
                 : const FaIcon(
                     FontAwesomeIcons.cloudArrowUp,
