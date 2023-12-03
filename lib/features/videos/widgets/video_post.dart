@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marquee/marquee.dart';
+import 'package:tiktok/features/videos/models/video_model.dart';
 import 'package:tiktok/features/videos/view_models/playback_config_vm.dart';
 import 'package:tiktok/features/videos/widgets/video_button.dart';
 import 'package:tiktok/features/videos/widgets/video_comments.dart';
@@ -27,12 +28,14 @@ const keywords = [
 
 class VideoPost extends ConsumerStatefulWidget {
   final Function onVideoFinished;
+  final VideoModel videoData;
   final int index;
 
   const VideoPost({
     super.key,
     required this.onVideoFinished,
     required this.index,
+    required this.videoData,
   });
 
   @override
@@ -175,10 +178,11 @@ class VideoPostState extends ConsumerState<VideoPost>
         children: [
           // Positioned 위젯은 stack안에서 원하는 위치에 위젯을 넣을수 있다
           Positioned.fill(
-            child: _videoPlayController.value.isInitialized
+            child: !_videoPlayController.value.isInitialized
                 ? VideoPlayer(_videoPlayController)
-                : Container(
-                    color: Colors.black,
+                : Image.network(
+                    widget.videoData.thumbnailUrl,
+                    fit: BoxFit.cover,
                   ),
           ),
           Positioned.fill(
@@ -229,18 +233,18 @@ class VideoPostState extends ConsumerState<VideoPost>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "@jace",
-                  style: TextStyle(
+                Text(
+                  "@${widget.videoData.creator}",
+                  style: const TextStyle(
                     fontSize: Sizes.size20,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Gaps.v10,
-                const Text(
-                  "This is my house in Seoul🏠",
-                  style: TextStyle(
+                Text(
+                  widget.videoData.description,
+                  style: const TextStyle(
                     color: Colors.white,
                   ),
                 ),
@@ -330,25 +334,26 @@ class VideoPostState extends ConsumerState<VideoPost>
             child: Column(
               children: [
                 // CircleAvatar는 이미지가 들어있는 원을 제공한다
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 25,
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
                   foregroundImage: NetworkImage(
-                      "https://avatars.githubusercontent.com/u/107394342?"),
-                  child: Text("JACE"),
+                    "https://firebasestorage.googleapis.com/v0/b/tiktok-cool-project-abc.appspot.com/o/avatars%2F${widget.videoData.creatorUid}?alt=media",
+                  ),
+                  child: Text(widget.videoData.creator),
                 ),
                 Gaps.v20,
                 VideoButton(
                   icon: FontAwesomeIcons.solidHeart,
-                  text: S.of(context).likeCount(123124123),
+                  text: S.of(context).likeCount(widget.videoData.likes),
                 ),
                 Gaps.v20,
                 GestureDetector(
                   onTap: () => _onCommentsTap(context),
                   child: VideoButton(
                     icon: FontAwesomeIcons.solidComment,
-                    text: S.of(context).commentCount(6596845983453),
+                    text: S.of(context).commentCount(widget.videoData.comments),
                   ),
                 ),
                 Gaps.v20,
